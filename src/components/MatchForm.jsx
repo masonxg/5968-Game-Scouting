@@ -29,7 +29,8 @@ function MatchForm({ onSave }) {
 
     function renderSection(sectionName, sectionConfig) {
         return (
-            <fieldset style={{ marginBottom: 20 }}>
+            <fieldset className="card">
+
                 <legend>{sectionName.toUpperCase()}</legend>
 
                 {Object.entries(sectionConfig).map(([key, cfg]) => (
@@ -62,7 +63,9 @@ function MatchForm({ onSave }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2>New Match</h2>
+            <div className="card">
+                <h2>New Match</h2>
+
 
             <div>
                 <label>
@@ -122,7 +125,9 @@ function MatchForm({ onSave }) {
                 </label>
             </div>
 
-            <button type="submit">Save Match</button>
+                <button type="submit">Save Match</button>
+            </div>
+
         </form>
     )
 }

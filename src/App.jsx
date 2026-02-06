@@ -20,23 +20,37 @@ function App() {
         loadMatches()
     }, [])
 
-    return (
-        <div style={{ padding: 20 }}>
+
+       return (
+        <div className="app">
             <h1>FRC 2026 QR Scout</h1>
 
             <MatchForm onSave={loadMatches} />
 
-            <h2>Saved Matches</h2>
-            <ul>
-                {matches.map(m => (
-                    <li key={m.id}>
-                        Team {m.team} – Match {m.matchNumber}
-                        <button onClick={() => handleDelete(m.id)}>DELETE</button>
-                    </li>
-                ))}
-            </ul>
+            <div className="card">
+                <h2>Saved Matches</h2>
+
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                    {matches.map(m => (
+                        <li key={m.id} className="match-item">
+                            <div>
+                                <strong>Team {m.team}</strong>
+                                <div>Match {m.matchNumber}</div>
+                            </div>
+
+                            <button
+                                className="delete-btn"
+                                onClick={() => handleDelete(m.id)}
+                            >
+                                DELETE
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
+
 }
 
 export default App
