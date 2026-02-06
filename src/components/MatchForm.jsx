@@ -3,6 +3,7 @@ import { gameConfig } from '../config/gameConfig'
 import { createEmptyMatch } from '../models/match'
 import { addMatch } from '../db/db'
 
+
 function MatchForm({ onSave }) {
     const [match, setMatch] = useState(createEmptyMatch())
 
