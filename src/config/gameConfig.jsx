@@ -11,7 +11,7 @@ export const gameConfig = {
         mobility: { type: 'boolean', label: 'Mobility' },
         scoredPieces: { type: 'number', label: 'Auto Pieces Scored' },
         climbed: { type: 'boolean', label: 'Climb' },
-        Intake: {
+        intake: {
             type: 'multiselect',
             label: 'Intake Location',
             options: ['Depot', 'Neutral Zone', 'Outpost'],
@@ -21,7 +21,7 @@ export const gameConfig = {
     teleop: {
         cycles: { type: 'number', label: 'Teleop Cycles' },
         scoredPieces: { type: 'number', label: 'Teleop Pieces Scored' },
-        Intake: {
+        intake: {
             type: 'multiselect',
             label: 'Inake Location',
             options: ['Depot', 'Neutral Zone', 'Outpost'],
@@ -40,6 +40,7 @@ export const gameConfig = {
     },
 
     endgame: {
+        died: { type: 'boolean', label: 'Died?' },
         climbed: {
             type: 'select',
             label: 'Climb',

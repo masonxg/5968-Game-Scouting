@@ -44,20 +44,21 @@ export function matchToTSVRow(m) {
         auto_scoredPieces: m.auto?.scoredPieces ?? 0,
         auto_climb: m.auto?.climb ?? false,
         auto_intake: Array.isArray(m.auto?.intake)
-            ? m.auto.intake.join('|')
+            ? m.auto.intake.join(', ')
             : (m.auto?.intake ?? ''),
 
         // TELEOP
         teleop_cycles: m.teleop?.cycles ?? 0,
         teleop_scoredPieces: m.teleop?.scoredPieces ?? 0,
         teleop_intake: Array.isArray(m.teleop?.intake)
-            ? m.teleop.intake.join('|')
+            ? m.teleop.intake.join(', ')
             : (m.teleop?.intake ?? ''),
         teleop_defense: m.teleop?.defense ?? '',
         teleop_traversal: m.teleop?.traversal ?? '', // multiple choice (string)
 
         // ENDGAME
-        endgame_climbed: m.endgame?.climbed ?? false,
+        endgame_died: m.endgame?.died ?? false,
+        endgame_climbed: m.endgame?.climbed ?? '',
 
         // FOULS
         fouls: m.fouls?.fouls ?? 0,

@@ -30,7 +30,8 @@ function flattenMatch(m) {
         teleop_traversal: m.teleop?.traversal ?? '',
 
         // ENDGAME
-        endgame_climbed: m.endgame?.climbed ?? false,
+        endgame_died: m.endgame?.died ?? false,
+        endgame_climbed: m.endgame?.climbed ?? '',
 
         // FOULS
         fouls: m.fouls?.fouls ?? 0,
