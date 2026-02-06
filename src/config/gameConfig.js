@@ -5,6 +5,7 @@ export const gameConfig = {
     auto: {
         mobility: { type: 'boolean', label: 'Mobility' },
         scoredPieces: { type: 'number', label: 'Auto Pieces Scored' },
+        climbed: { type: 'boolean', label: 'Climb' },
     },
 
     teleop: {
@@ -14,7 +15,7 @@ export const gameConfig = {
 
     endgame: {
         climbed: { type: 'boolean', label: 'Climb' },
-        parked: { type: 'boolean', label: 'Parked' },
+        
     },
 
     fouls: {
