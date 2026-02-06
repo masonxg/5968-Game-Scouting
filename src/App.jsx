@@ -45,7 +45,7 @@ function App() {
 
     return (
         <div className="app">
-            <h1>FRC 2026 QR Scout</h1>
+            <h1>FRC 5968 QR Scout 2026</h1>
 
             <MatchForm onSave={loadMatches} />
 

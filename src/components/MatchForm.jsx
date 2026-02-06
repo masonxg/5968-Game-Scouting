@@ -73,17 +73,18 @@ function MatchForm({ onSave }) {
                                     ))}
                                     </select>
                                 ) : cfg.type === 'multiselect' ? (
-                                    <div style={{ display: 'grid', gap: 6 }}>
+                                    <div className="multi-select">
                                         {(cfg.options ?? []).map(opt => {
                                             const selected = (match[sectionName][key] ?? []).includes(opt)
+
                                             return (
-                                                <label key={opt} style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                                                <label key={opt} className="multi-option">
                                                     <input
                                                         type="checkbox"
                                                         checked={selected}
                                                         onChange={() => toggleMulti(sectionName, key, opt)}
                                                     />
-                                                    {opt}
+                                                    <span>{opt}</span>
                                                 </label>
                                             )
                                         })}

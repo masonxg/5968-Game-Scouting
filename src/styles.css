@@ -62,3 +62,29 @@ button {
     justify-content: space-between;
     align-items: center;
 }
+
+/* --- Fix multiselect checkbox alignment --- */
+.multi-option {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+    gap: 10px;
+    width: fit-content;
+}
+
+    .multi-option input[type="checkbox"] {
+        width: auto !important; /* override global input { width:100% } */
+        padding: 0;
+        margin: 0;
+    }
+
+    .multi-option span {
+        white-space: normal;
+    }
+
+/* Ensure the multiselect wrapper doesn't stretch weirdly */
+.multi-select {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
