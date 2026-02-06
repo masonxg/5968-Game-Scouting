@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import MatchForm from './components/MatchForm.jsx'
 import { getAllMatches, deleteMatch } from './db/db'
 import { QRCodeSVG } from 'qrcode.react'
-import { matchToTSVRow, tsvHeaderLine } from './utils/tsvRow'
+import { matchToTSVRow, tsvHeaderLine } from './utils/tsvRow.jsx'
 
 async function copyText(text) {
     if (navigator.clipboard && window.isSecureContext) {

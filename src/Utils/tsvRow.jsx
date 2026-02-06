@@ -3,8 +3,6 @@ function clean(value) {
     return String(value).replace(/\t/g, ' ').replace(/\r?\n/g, ' ')
 }
 
-// This defines the exact column order in Excel.
-// Change/add columns here any time.
 export const TSV_HEADERS = [
     'timestamp',
     'event',
@@ -12,18 +10,22 @@ export const TSV_HEADERS = [
     'team',
     'scout',
 
+    'auto_start',
     'auto_mobility',
     'auto_scoredPieces',
+    'auto_climb',
+    'auto_intake',
 
     'teleop_cycles',
     'teleop_scoredPieces',
+    'teleop_intake',
+    'teleop_defense',
+    'teleop_traversal',
 
     'endgame_climbed',
-    'endgame_parked',
 
     'fouls',
     'techFouls',
-
     'notes',
 ]
 
@@ -36,15 +38,28 @@ export function matchToTSVRow(m) {
         team: m.team ?? '',
         scout: m.scout ?? '',
 
+        // AUTO
+        auto_start: m.auto?.start ?? '',            // multiple choice (string)
         auto_mobility: m.auto?.mobility ?? false,
         auto_scoredPieces: m.auto?.scoredPieces ?? 0,
+        auto_climb: m.auto?.climb ?? false,
+        auto_intake: Array.isArray(m.auto?.intake)
+            ? m.auto.intake.join('|')
+            : (m.auto?.intake ?? ''),
 
+        // TELEOP
         teleop_cycles: m.teleop?.cycles ?? 0,
         teleop_scoredPieces: m.teleop?.scoredPieces ?? 0,
+        teleop_intake: Array.isArray(m.teleop?.intake)
+            ? m.teleop.intake.join('|')
+            : (m.teleop?.intake ?? ''),
+        teleop_defense: m.teleop?.defense ?? '',
+        teleop_traversal: m.teleop?.traversal ?? '', // multiple choice (string)
 
+        // ENDGAME
         endgame_climbed: m.endgame?.climbed ?? false,
-        endgame_parked: m.endgame?.parked ?? false,
 
+        // FOULS
         fouls: m.fouls?.fouls ?? 0,
         techFouls: m.fouls?.techFouls ?? 0,
 
@@ -54,7 +69,6 @@ export function matchToTSVRow(m) {
     return TSV_HEADERS.map(h => clean(row[h])).join('\t')
 }
 
-// Optional: header line (if you ever want to paste headers into Excel once)
 export function tsvHeaderLine() {
     return TSV_HEADERS.join('\t')
 }

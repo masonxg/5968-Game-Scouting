@@ -16,13 +16,18 @@ function flattenMatch(m) {
         scout: m.scout ?? '',
 
         // AUTO
+        auto_start: m.auto?.start ?? '',
         auto_mobility: m.auto?.mobility ?? false,
         auto_scoredPieces: m.auto?.scoredPieces ?? 0,
         auto_climbed: m.auto?.climbed ?? false,
+        auto_intake: m.auto?.intake ?? '',
 
         // TELEOP
         teleop_cycles: m.teleop?.cycles ?? 0,
         teleop_scoredPieces: m.teleop?.scoredPieces ?? 0,
+        teleop_intake: m.teleop?.intake ?? '',
+        teleop_defense: m.teleop?.defense ?? '',
+        teleop_traversal: m.teleop?.traversal ?? '',
 
         // ENDGAME
         endgame_climbed: m.endgame?.climbed ?? false,

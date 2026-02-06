@@ -6,6 +6,22 @@ import { addMatch } from '../db/db'
 
 function MatchForm({ onSave }) {
     const [match, setMatch] = useState(createEmptyMatch())
+    function toggleMulti(section, key, option) {
+        setMatch(prev => {
+            const current = prev[section]?.[key] ?? []
+            const next = current.includes(option)
+                ? current.filter(x => x !== option)
+                : [...current, option]
+
+            return {
+                ...prev,
+                [section]: {
+                    ...prev[section],
+                    [key]: next,
+                },
+            }
+        })
+    }
 
     function updateField(section, key, value) {
         setMatch(prev => ({
@@ -42,19 +58,45 @@ function MatchForm({ onSave }) {
                                 <input
                                     type="checkbox"
                                     checked={match[sectionName][key] || false}
-                                    onChange={e =>
-                                        updateField(sectionName, key, e.target.checked)
-                                    }
+                                    onChange={e => updateField(sectionName, key, e.target.checked)}
                                 />
+                            ) : cfg.type === 'select' ? (
+                                <select
+                                    value={match[sectionName][key] ?? ''}
+                                    onChange={e => updateField(sectionName, key, e.target.value)}
+                                >
+                                    <option value="">-- Select --</option>
+                                    {cfg.options.map(opt => (
+                                        <option key={opt} value={opt}>
+                                            {opt}
+                                        </option>
+                                    ))}
+                                    </select>
+                                ) : cfg.type === 'multiselect' ? (
+                                    <div style={{ display: 'grid', gap: 6 }}>
+                                        {(cfg.options ?? []).map(opt => {
+                                            const selected = (match[sectionName][key] ?? []).includes(opt)
+                                            return (
+                                                <label key={opt} style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={selected}
+                                                        onChange={() => toggleMulti(sectionName, key, opt)}
+                                                    />
+                                                    {opt}
+                                                </label>
+                                            )
+                                        })}
+                                    </div>
+
                             ) : (
                                 <input
                                     type="number"
-                                    value={match[sectionName][key] || ''}
-                                    onChange={e =>
-                                        updateField(sectionName, key, Number(e.target.value))
-                                    }
+                                    value={match[sectionName][key] ?? ''}
+                                    onChange={e => updateField(sectionName, key, e.target.value === '' ? '' : Number(e.target.value))}
                                 />
                             )}
+
                         </label>
                     </div>
                 ))}
