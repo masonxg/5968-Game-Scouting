@@ -11,13 +11,33 @@ function App() {
 
     async function addTestMatch() {
         await addMatch({
+            event: 'Test Event',
+            matchNumber: 'Q1',
             team: '5968',
-            match: 'Q1',
-            notes: 'Test entry',
+            scout: 'You',
+            auto: {
+                mobility: true,
+                scoredPieces: 2,
+            },
+            teleop: {
+                cycles: 8,
+                scoredPieces: 12,
+            },
+            endgame: {
+                climbed: true,
+                parked: false,
+            },
+            fouls: {
+                fouls: 0,
+                techFouls: 0,
+            },
+            notes: 'Model test',
             timestamp: new Date().toISOString(),
         })
+
         loadMatches()
     }
+
 
     async function removeMatch(id) {
         await deleteMatch(id)
