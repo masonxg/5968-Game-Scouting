@@ -44,7 +44,7 @@ export const gameConfig = {
         climbed: {
             type: 'select',
             label: 'Climb',
-            options: ['None', 'L1', 'L2', 'L3'],
+            options: ['L0', 'L1', 'L2', 'L3'],
         },
         
     },
