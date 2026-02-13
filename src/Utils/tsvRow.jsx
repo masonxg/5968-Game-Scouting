@@ -5,7 +5,6 @@ function clean(value) {
 
 export const TSV_HEADERS = [
     'timestamp',
-    'event',
     'matchNumber',
     'team',
     'scout',
@@ -14,18 +13,24 @@ export const TSV_HEADERS = [
     'auto_mobility',
     'auto_scoredPieces',
     'auto_climb',
-    'auto_intake',
+    'auto_intake_depot',
+    'auto_intake_outpost',
+    'auto_intake_neutral',
 
-    'teleop_cycles',
-    'teleop_scoredPieces',
-    'teleop_intake',
+    'teleop_intake_depot',
+    'teleop_intake_outpost',
+    'teleop_intake_neutral',
+    'Defended',
     'teleop_defense',
     'teleop_traversal',
+    'Intake Ability',
+    'Shooting Ability',
 
+    'endgame_died',
+    'endgame_time',
     'endgame_climbed',
 
-    'fouls',
-    'techFouls',
+
     'notes',
 ]
 
@@ -43,26 +48,26 @@ export function matchToTSVRow(m) {
         auto_mobility: m.auto?.mobility ?? false,
         auto_scoredPieces: m.auto?.scoredPieces ?? 0,
         auto_climb: m.auto?.climb ?? false,
-        auto_intake: Array.isArray(m.auto?.intake)
-            ? m.auto.intake.join(', ')
-            : (m.auto?.intake ?? ''),
+        auto_intake_depot: m.auto?.intake_depot ?? false,
+        auto_intake_outpost: m.auto?.intake_outpost ?? false,
+        auto_intake_neutral: m.auto?.intake_neutral ?? false,
 
         // TELEOP
-        teleop_cycles: m.teleop?.cycles ?? 0,
-        teleop_scoredPieces: m.teleop?.scoredPieces ?? 0,
-        teleop_intake: Array.isArray(m.teleop?.intake)
-            ? m.teleop.intake.join(', ')
-            : (m.teleop?.intake ?? ''),
+
+        teleop_intake_depot: m.teleop?.intake_depot ?? false,
+        teleop_intake_outpost: m.teleop?.intake_outpost ?? false,
+        teleop_intake_neutral: m.teleop?.intake_neutral ?? false,
+        teleop_defended: m.teleop?.defended ?? false,
         teleop_defense: m.teleop?.defense ?? '',
         teleop_traversal: m.teleop?.traversal ?? '', // multiple choice (string)
+        teleop_intakeA: m.teleop?.intakeA?? '',
+        teleop_shootingA: m.teleop?.shooting ?? '',
 
         // ENDGAME
         endgame_died: m.endgame?.died ?? false,
+        endgame_time: m.endgame?.time ?? 0,
         endgame_climbed: m.endgame?.climbed ?? '',
 
-        // FOULS
-        fouls: m.fouls?.fouls ?? 0,
-        techFouls: m.fouls?.techFouls ?? 0,
 
         notes: m.notes ?? '',
     }

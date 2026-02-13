@@ -11,36 +11,42 @@ export const gameConfig = {
         mobility: { type: 'boolean', label: 'Mobility' },
         scoredPieces: { type: 'number', label: 'Auto Pieces Scored' },
         climbed: { type: 'boolean', label: 'Climb' },
-        intake: {
-            type: 'multiselect',
-            label: 'Intake Location',
-            options: ['Depot', 'Neutral Zone', 'Outpost'],
-        },
+        intake_depot: { type: 'boolean', label: 'Intakes at Depot?' },
+        intake_outpost: { type: 'boolean', label: 'Intakes at Outpost?' },
+        intake_neutral: { type: 'boolean', label: 'Intakes at Neutral Zone?' },
     },
 
     teleop: {
-        cycles: { type: 'number', label: 'Teleop Cycles' },
-        scoredPieces: { type: 'number', label: 'Teleop Pieces Scored' },
-        intake: {
-            type: 'multiselect',
-            label: 'Inake Location',
-            options: ['Depot', 'Neutral Zone', 'Outpost'],
-        },
+        intake_depot: { type: 'boolean', label: 'Intakes at Depot?' },
+        intake_outpost: { type: 'boolean', label: 'Intakes at Outpost?' },
+        intake_neutral: { type: 'boolean', label: 'Intakes at Neutral Zone?' },
+        defended: { type: 'boolean', label: 'Defended?' },
         defense: {
             type: 'select',
-            label: 'Defense',
+            label: 'Defensive Ability',
             options: ['None', 'Ineffective', 'effective', 'GOAT Defender'],
+        },
+        intakeA: {
+            type: 'select',
+            label: 'Intaking Ability',
+            options: ['None', 'Ineffective', 'effective', 'GOAT Intaker'],
+        },
+        shootingA: {
+            type: 'select',
+            label: 'Shooting Ability',
+            options: ['None', 'Ineffective', 'effective', 'GOAT Shooter'],
         },
         traversal: {
             type: 'select',
             label: 'Traversal',
             options: ['None', 'Bump', 'Trench', 'Both'],
-           
+
         },
     },
 
     endgame: {
         died: { type: 'boolean', label: 'Died?' },
+        timeclimb: { type: 'number', label: 'Time to Climb' },
         climbed: {
             type: 'select',
             label: 'Climb',
@@ -49,8 +55,4 @@ export const gameConfig = {
         
     },
 
-    fouls: {
-        fouls: { type: 'number', label: 'Fouls' },
-        techFouls: { type: 'number', label: 'Tech Fouls' },
-    },
  }

@@ -111,16 +111,6 @@ function MatchForm({ onSave }) {
                 <h2>New Match</h2>
 
 
-            <div>
-                <label>
-                    Event:{' '}
-                    <input
-                        value={match.event}
-                        onChange={e => updateRoot('event', e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
 
             <div>
                 <label>
@@ -157,7 +147,7 @@ function MatchForm({ onSave }) {
             {renderSection('auto', gameConfig.auto)}
             {renderSection('teleop', gameConfig.teleop)}
             {renderSection('endgame', gameConfig.endgame)}
-            {renderSection('fouls', gameConfig.fouls)}
+            
 
             <div>
                 <label>

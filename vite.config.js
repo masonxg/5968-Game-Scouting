@@ -3,31 +3,17 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+    base: '/5968-Game-Scouting/', // MUST match your repo name exactly
     plugins: [
         react(),
         VitePWA({
             registerType: 'autoUpdate',
-            includeAssets: ['favicon.svg'],
             manifest: {
                 name: 'FRC 2026 QR Scout',
                 short_name: 'QR Scout',
-                start_url: '/',
                 display: 'standalone',
-                background_color: '#ffffff',
-                theme_color: '#000000',
-                icons: [
-                    {
-                        src: 'pwa-192x192.png',
-                        sizes: '192x192',
-                        type: 'image/png'
-                    },
-                    {
-                        src: 'pwa-512x512.png',
-                        sizes: '512x512',
-                        type: 'image/png'
-                    }
-                ]
-            }
-        })
-    ]
+                start_url: '.',
+            },
+        }),
+    ],
 })
