@@ -20,11 +20,11 @@ export const TSV_HEADERS = [
     'teleop_intake_depot',
     'teleop_intake_outpost',
     'teleop_intake_neutral',
-    'Defended',
+    'teleop_defended',
     'teleop_defense',
     'teleop_traversal',
-    'Intake Ability',
-    'Shooting Ability',
+    'teleop_intakeA',
+    'teleop_shootingA',
 
     'endgame_died',
     'endgame_time',
@@ -61,7 +61,7 @@ export function matchToTSVRow(m) {
         teleop_defense: m.teleop?.defense ?? '',
         teleop_traversal: m.teleop?.traversal ?? '', // multiple choice (string)
         teleop_intakeA: m.teleop?.intakeA?? '',
-        teleop_shootingA: m.teleop?.shooting ?? '',
+        teleop_shootingA: m.teleop?.shootingA ?? '',
 
         // ENDGAME
         endgame_died: m.endgame?.died ?? false,
