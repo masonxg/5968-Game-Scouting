@@ -46,7 +46,7 @@ export const gameConfig = {
 
     endgame: {
         died: { type: 'boolean', label: 'Died?' },
-        timeclimb: { type: 'number', label: 'Time to Climb' },
+        time: { type: 'number', label: 'Time to Climb' },
         climbed: {
             type: 'select',
             label: 'Climb',
